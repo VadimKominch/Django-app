@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <a  class="add" href="{% url 'create' %}">Add New User</a>
+    {%for el in employees %}
+    <div  class="element">
+        <p>{{el.pk}}</p>
+        <p>{{el.name}}</p>
+        <p>{{el.surname}}</p>
+        <div class="btn-block">
+            <a class="edit" href="{% url 'edit' el.pk %}">Edit</a>
+            <a class="delete" href="{% url 'delete' el.pk %}">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
